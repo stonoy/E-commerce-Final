@@ -63,8 +63,8 @@ const createOrder = async (req, res, next) => {
   });
 
   const session = await stripe.checkout.sessions.create({
-    success_url: "http://localhost:5173/cart?success=true",
-    cancel_url: "http://localhost:5173/cart?success=false",
+    success_url: "https://stonoy-ecommerce.onrender.com/cart?success=true",
+    cancel_url: "https://stonoy-ecommerce.onrender.com/cart?success=false",
     line_items: line_items,
     mode: "payment",
     shipping_address_collection: {

@@ -33,6 +33,9 @@ const Admin = () => {
           <li>
             <Link to="report">Report</Link>
           </li>
+          <li>
+            <Link to="sales">Sales</Link>
+          </li>
         </ul>
 
         {/* {MENU END} */}

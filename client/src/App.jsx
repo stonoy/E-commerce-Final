@@ -18,6 +18,7 @@ import {
   AdminSingleOrder,
   AdminEditProduct,
   AdminReport,
+  AdminSales
 } from "./pages";
 import { ErrorElement } from "./components";
 
@@ -42,6 +43,7 @@ import { loader as adminSingleOrder } from "./pages/AdminSingleOrder";
 import { loader as adminAllProduct } from "./pages/AdminProduct";
 import { loader as adminSingleProduct } from "./pages/AdminEditProduct";
 import { loader as adminReports } from "./pages/AdminReport";
+import { loader as adminSales } from "./pages/AdminSales";
 
 const getTheme = () => {
   const theme = localStorage.getItem('theme') || 'winter'
@@ -124,6 +126,11 @@ const router = createBrowserRouter([
             path: "report",
             element: <AdminReport />,
             loader: adminReports,
+          },
+          {
+            path: 'sales',
+            element: <AdminSales/>,
+            loader: adminSales,
           },
           {
             path: "allorders/:id",

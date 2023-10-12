@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import Cart from "../models/cart.js";
 import Stripe from "stripe";
 import { nanoid } from "nanoid";
+import day from "dayjs";
 import checkPermission from "../utils/checkParmission.js";
 const stripe = new Stripe(
   "sk_test_51NmHhXSDdSE6tXo78kWPg1ef6Z7BXdHJT3qn2UiiBglotfJj1f0o0dyNJdUAkrkfwr2CPcDaictYIGwI5QiQ9Xkq008QD5cxLS"
@@ -185,12 +186,52 @@ const getCurrentUserOrder = async (req, res, next) => {
   res.status(200).json({ orders, numOfPages, page });
 };
 
+const orderStat = async(req,res,next) => {
+  let monthlyOrders = await Order.aggregate([
+    { $match: { status: {
+      $in: ['paid', 'delivered']
+  } } },
+    {
+      $group: {
+        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        count: { $sum: 1 },
+        income: {$sum: '$subTotal'}
+      },
+    },
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+    { $limit: 5 },
+  ]);
+
+  
+
+  monthlyOrders = monthlyOrders.map((data) => {
+    const {
+      _id: { year, month },
+      count,
+      income
+    } = data;
+
+    const date = day()
+      .month(month - 1)
+      .year(year)
+      .format("MMM YY");
+    return { date, count, income };
+  });
+
+  // console.log(monthlyOrders)
+
+  res.status(200).json({monthlyOrders})
+}
+
+
+
 export {
   getAllOrders,
   createOrder,
   singleOrder,
   updateOrder,
   getCurrentUserOrder,
+  orderStat
 };
 
 // EXTRA CODE OF CREATE ORDER

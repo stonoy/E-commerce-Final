@@ -1,3 +1,4 @@
+import { BarChartContainer } from "./BarChartContainer";
 import ButtonParams from "./ButtonParams";
 import Cards from "./Cards";
 import CartItemContainer from "./CartItemContainer";
@@ -24,6 +25,7 @@ import ReportList from "./ReportList";
 import Sidebar from "./Sidebar";
 import SingleOrderDetails from "./SingleOrderDetails";
 import Success from "./Success";
+
 
 export {
   ErrorElement,
@@ -52,4 +54,5 @@ export {
   Pagination,
   Footer,
   ReportList,
+  BarChartContainer
 };

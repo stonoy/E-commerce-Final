@@ -4,6 +4,7 @@ import AdminEditProduct from "./AdminEditProduct";
 import AdminOrders from "./AdminOrders";
 import AdminProduct from "./AdminProduct";
 import AdminReport from "./AdminReport";
+import AdminSales from "./AdminSales";
 import AdminSingleOrder from "./AdminSingleOrder";
 import Cart from "./Cart";
 
@@ -17,6 +18,7 @@ import Register from "./Register";
 import SingleOrder from "./SingleOrder";
 import SingleProduct from "./SingleProduct";
 import UserOrders from "./UserOrders";
+
 
 export {
   HomeLayOut,
@@ -36,4 +38,5 @@ export {
   AdminSingleOrder,
   AdminEditProduct,
   AdminReport,
+  AdminSales
 };

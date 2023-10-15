@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Link, redirect, useActionData } from "react-router-dom";
+import { Form, Link, redirect, useActionData, useNavigation } from "react-router-dom";
 import { customFetch } from "../utils/all";
 import shopping_dark_svg from '/shopping-dark.svg'
 import shopping_light_svg from '/shopping-light.svg'
@@ -26,12 +26,16 @@ export const action = async ({ request }) => {
 };
 
 const Login = ({getTheme}) => {
+  const err = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   useEffect(() => {
     getTheme()
   },[])
 
-  const err = useActionData();
+  
+
   return (
     <main className="hero min-h-screen bg-base-200">
        <div className="hero-content align-element flex-col gap-2 lg:flex-row lg:gap-10">
@@ -93,7 +97,9 @@ const Login = ({getTheme}) => {
           </div>
           <div className="form-control mt-4">
             <button className="btn btn-primary" type="submit">
-              Login
+              Login {isSubmitting && (
+                  <span className="loading loading-spinner"></span>
+                )}
             </button>
           </div>
           {err && <p className="text-error w-fit mx-auto font-bold">{err}</p>}

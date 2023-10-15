@@ -27,7 +27,7 @@ const AdminOrders = () => {
 
   return (
     <div className="flex flex-col">
-      <OrderList />;
+      <OrderList />
       <Pagination numOfPages={numOfPages} page={page} />
     </div>
   );

@@ -25,7 +25,7 @@ const AdminReport = () => {
 
   return (
     <div className="flex flex-col">
-      <ReportList />;
+      <ReportList />
       <Pagination numOfPages={data?.numOfPages || 1} page={data?.page || 1} />
     </div>
   );

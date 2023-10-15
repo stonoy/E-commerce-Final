@@ -6,7 +6,7 @@ const OrderList = () => {
   const res = useLoaderData();
   const list = ["all", "pending", "failed", "paid", "delivered", "canceled"];
 
-  console.log(res);
+  // console.log(res);
 
   if (!res.data) {
     return (
@@ -24,14 +24,14 @@ const OrderList = () => {
 
   return (
     <div className=" overflow-x-auto my-2">
-      <div className="my-6 flex justify-between items-center">
+      <div className="my-6 flex justify-between items-center ">
         <h1 className="text-2xl text-info-content ">Order Details</h1>
-        <Form>
+        <Form >
           <select
             name="status"
             id="status"
             defaultValue={res.params.status}
-            className="select select-sm border-base-300 mr-4"
+            className="select select-sm border-base-300 mr-4 "
           >
             {list.map((item) => {
               return (

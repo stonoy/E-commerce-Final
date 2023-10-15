@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Form, Link, redirect, useActionData } from "react-router-dom";
 import { customFetch } from "../utils/all";
+import shopping_dark_svg from '/shopping-dark.svg'
+import shopping_light_svg from '/shopping-light.svg'
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -32,6 +34,27 @@ const Login = ({getTheme}) => {
   const err = useActionData();
   return (
     <main className="hero min-h-screen bg-base-200">
+       <div className="hero-content align-element flex-col gap-2 lg:flex-row lg:gap-10">
+        <div className="text-center flex flex-col gap-4 justify-center  lg:text-left">
+          <Link to='/products' className="text-3xl text-accent font-bold mb-4">Check Our Products</Link>
+          
+          {
+            getTheme() !== 'winter' ? 
+
+            <img
+            src={shopping_dark_svg}
+            alt="Shopping_App"
+            className="hidden lg:inline-block w-[500px] m-auto "
+          />
+          :
+          <img
+            src={shopping_light_svg}
+            alt="Shopping_App"
+            className="hidden lg:inline-block w-[500px] m-auto "
+          />
+          }
+        </div>
+      {/* {Login Form} */}
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <Form className="card-body" method="post">
           <h2 className="text-lg w-fit mx-auto">Login Here</h2>
@@ -75,6 +98,7 @@ const Login = ({getTheme}) => {
           </div>
           {err && <p className="text-error w-fit mx-auto font-bold">{err}</p>}
         </Form>
+        </div>
       </div>
     </main>
   );

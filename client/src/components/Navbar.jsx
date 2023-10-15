@@ -42,11 +42,11 @@ const Navbar = () => {
         <ul className="hidden md:menu-horizontal mt-2">
           <Navlinks />
         </ul>
-        <h1 className="text-2xl mt-2 relative">
+        <Link to='/cart' className="text-2xl mt-2 relative">
           <FaShoppingCart />
           <div className="badge badge-primary badge-md absolute bottom-[30px] left-[12px] md:bottom-[20px]">{numItemsInCart}</div>
           {/* {console.log(numItemsInCart)} */}
-        </h1>
+        </Link>
       </div>
     </nav>
   );

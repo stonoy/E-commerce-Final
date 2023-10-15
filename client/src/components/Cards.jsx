@@ -35,7 +35,7 @@ const Cards = () => {
           <div className="rating rating-xs">{ratingStar(5, avgRating)}</div>
           <div className="badge badge-secondary">{numOfReviews}</div>
         </div>
-              <h1 className="card-title">{price}</h1>
+              <h1 className="card-title">Rs {price}</h1>
               <h2 className="card-title">
                 {name}
                 <div className="badge badge-secondary">NEW</div>
